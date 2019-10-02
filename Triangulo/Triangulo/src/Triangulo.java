@@ -23,6 +23,7 @@ public class Triangulo {
 		this.lado2 = lado2;
 	}
 
+
 	public double getLado3() {
 		return lado3;
 	}
@@ -30,16 +31,27 @@ public class Triangulo {
 	public void setLado3(double lado3) {
 		this.lado3 = lado3;
 	}
+	
+	public String getNomeTriangulo() {
+		return nomeTriangulo;
+	}
+	
+	public void setNomeTriangulo(String nomeTriangulo) {
+		this.nomeTriangulo = nomeTriangulo;
+	}
 
 	public void nomeTriangulo() {
 		if (lado1 == lado2 && lado2 == lado3) {
-			nomeTriangulo = "Equilátero";
+			nomeTriangulo = "Equilatero";
+			System.out.println("Este triangulo � um " + nomeTriangulo);
 		} else if (lado1 == lado2 && lado1 != lado3 || lado1 == lado3 && lado2 != lado3) {
-			nomeTriangulo = "Isóceles";
+			nomeTriangulo = "Isoceles";
+			System.out.println("Este triangulo � um " + nomeTriangulo);
 		} else if (lado1 != lado2 && lado2 != lado3) {
 			nomeTriangulo = "Escaleno";
+			System.out.println("Este triangulo � um " + nomeTriangulo);
 		} else {
-			System.out.println("Este objeto não é um triangulo");
+			System.out.println("Este objeto n�o � um triangulo");
 
 		}
 
@@ -48,18 +60,18 @@ public class Triangulo {
 	public void calculaPerimetro() {
 		if (eTriangulo() == true) {
 			double perimetro = lado1 + lado2 + lado3;
-			System.out.println("O perímetro do triangulo " + nomeTriangulo + " é de " + perimetro);
+			System.out.println("O per�metro do triangulo " + nomeTriangulo + " � de " + perimetro);
 		}
 
 	};
 
 	public void leDados() {
-		lado1 = Double.parseDouble(JOptionPane.showInputDialog("Insira aqui o valor para o primeiro lado do Triângulo"));
-		lado2 = Double.parseDouble(JOptionPane.showInputDialog("Insira aqui o valor para o segundo lado do Triângulo"));
-		lado3 = Double.parseDouble(JOptionPane.showInputDialog("Insira aqui o valor para o terceiro lado do Triângulo"));
-		eTriangulo();
-		nomeTriangulo();
-		calculaPerimetro();
+		lado1 = Double.parseDouble(JOptionPane.showInputDialog("Insira aqui o valor para o primeiro lado do Triangulo"));
+		lado2 = Double.parseDouble(JOptionPane.showInputDialog("Insira aqui o valor para o segundo lado do Triangulo"));
+		lado3 = Double.parseDouble(JOptionPane.showInputDialog("Insira aqui o valor para o terceiro lado do Triangulo"));
+//		eTriangulo();
+//		nomeTriangulo();
+//		calculaPerimetro();
 	};
 
 	private boolean eTriangulo() {
@@ -70,22 +82,29 @@ public class Triangulo {
 		}
 
 	};
+	
+	public void Menu() {
+		int resposta = Integer.parseInt(JOptionPane.showInputDialog(null,
+				"1 cadastrar triangulo \n2 calcula perimetro"
+						+ "\n3 Exibe o nome do triangulo \n4 Sai do programa",
+				"MENU", JOptionPane.INFORMATION_MESSAGE));
+		if (resposta == 1) {
+			leDados();
+			Menu();
+		} else if (resposta == 2) {
+			eTriangulo();
+			calculaPerimetro();
+			Menu();
+		} else if (resposta == 3) {
+			nomeTriangulo();
+			Menu();
+		} else if (resposta == 4) {
+			System.exit(0);
+		} else {
+			System.out.println("Resposta Invalida!");
+		}
+	}
 
-	//public static void CriaTriangulo() {
-	//	 resposta = Integer.parseInt(JOptionPane.showInputDialog(null, "1 – Cadastra Triângulo \n2 – Calcula o Perímetro"
-	//	  		+ "\n3 – Exibe o nome do triângulo \n4 – Sai do programa", "Menu de Opções", JOptionPane.INFORMATION_MESSAGE));
-	//	  if(resposta == 1) {
-	//		  Triangulo.leDados();
-	//	  } else if(resposta == 2) {
-	//		  Triangulo.calculaPerimetro();
-	//	  } else if(resposta == 3) {
-	//		  Triangulo.eTriangulo();
-	//	  } else if(resposta == 4) {
-	//		  System.exit(0);
-	//	  } else {
-	//		  System.out.println("Resposta inválida!");
-	//	  }
 
-	//}
 }
 
